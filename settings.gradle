@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'TaskManager'
-include('lib')
+include('app')
