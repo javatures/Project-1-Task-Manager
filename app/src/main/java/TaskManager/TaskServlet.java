@@ -30,6 +30,15 @@ public class TaskServlet extends HttpServlet {
         return 0;
     }
 
+    private boolean checkInt(String str){
+        try {
+            Integer.parseInt(str);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         if (req.getSession().getAttribute("user") == null) {
@@ -39,9 +48,14 @@ public class TaskServlet extends HttpServlet {
             TypeDao typeDao = new TypeDao();
             types = typeDao.getAllTypes();
             tasks = taskDao.getAllTasks(types, (int) req.getSession().getAttribute("user"));
-            System.out.println(req.getSession().getAttribute("user"));
-            String jsonList = mapper.writeValueAsString(tasks);
-            res.getWriter().println(jsonList);
+            completedTasks = taskDao.getAllCompletedTasks(types, (int) req.getSession().getAttribute("user"));
+            // System.out.println(req.getSession().getAttribute("user"));
+            String tasksList = mapper.writeValueAsString(tasks);
+            String completedTaskList = mapper.writeValueAsString(completedTasks);
+            String combinedList = "[" + tasksList +"," + completedTaskList + "]";
+            res.setContentType("application/json");
+            res.setCharacterEncoding("utf-8");
+            res.getWriter().println(combinedList);
             taskDao.closeConnection();
             typeDao.closeConnection();
         }
@@ -49,9 +63,18 @@ public class TaskServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String[] completeTasks = req.getParameter("completeTasks").split(",");
         if (req.getSession().getAttribute("user") == null) {
             res.sendRedirect("index.html");
+        } else if(checkInt(completeTasks[0])){
+            TaskDao dao = new TaskDao();
+            for (int i = 0; i < completeTasks.length; i++) {
+                dao.insertCompletedTask(types, Integer.parseInt(completeTasks[i]));
+            }
+            dao.closeConnection();
+            res.sendRedirect("task.html");
         } else {
+            System.out.println(req.getParameter("completeTasks"));
             int typeId;
             Date date = Date.valueOf(req.getParameter("date"));
             String task = req.getParameter("task");

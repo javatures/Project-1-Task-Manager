@@ -24,31 +24,37 @@
     <div class="container" id="taskContainer">
         <div><b>Tasks</b></div>
         <table>
-            <form action="tasks" method="POST">
             <thead>
                 <th class="idHeader"> Id</th>
                 <th class="dateHeader">Date</th>
                 <th class="typeHeader">Type</th>
                 <th class="taskHeader">Task</th>
             </thead>
-                <tbody id="taskTableContent"></tbody>
-            </form>
+            <tbody id="taskTableContent"></tbody>
         </table>
         <br />
         <form id="tasks" action="tasks" method="POST">
-            <div>
-                <label for="date"><b>Date:</b></label>
-                <input type="text" name="date"></input>
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <label for="date"><b>Date:</b></label>
+                    <input type="text" name="date"></input>
+                </div>
+                <div>
+                    <label for="date"><b>Type:</b></label>
+                    <input type="text" name="type"></input>
+                </div>
+                <div>
+                    <label for="date"><b>Task:</b></label>
+                    <input type="text" name="task"></input>
+                </div>
+                <button style="width: max-content;" type="submit">Add Task</button>
             </div>
+            <br/>
             <div>
-                <label for="date"><b>Type:</b></label>
-                <input type="text" name="type"></input>
+                <label for="completeTasks"><b>Tasks Complete:</b></label>
+                <input type="text" name="completeTasks"></input>
+                <button type="submit">Complete</button>
             </div>
-            <div>
-                <label for="date"><b>Task:</b></label>
-                <input type="text" name="task"></input>
-            </div>
-            <button style="width: max-content;" type="submit">Add Task</button>
         </form>
     </div>
     <div class="container">

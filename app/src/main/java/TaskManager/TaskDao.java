@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.postgresql.jdbc.PgStatement;
+
 public class TaskDao {
     private String url = "jdbc:postgresql://localhost:5432/taskmanager";
     private String username = "taskmanager";
@@ -38,6 +40,24 @@ public class TaskDao {
             e.printStackTrace();
         }
     }
+
+    public void insertCompletedTask(HashMap<Integer, String> types, int taskId){
+        try {
+            PreparedStatement deleteStatement = this.connection.prepareStatement("delete from tasks where id = ? returning *");
+            deleteStatement.setInt(1, taskId);
+            ResultSet result = deleteStatement.executeQuery();
+            while (result.next()){
+                PreparedStatement insertStatement = this.connection.prepareStatement("insert into completedTasks (taskdate, task, typeid, userid) values (?,?,?,?)");
+                insertStatement.setDate(1, result.getDate("taskdate"));
+                insertStatement.setString(2, result.getString("task"));
+                insertStatement.setInt(3, result.getInt("typeid"));
+                insertStatement.setInt(4, result.getInt("userid"));
+                insertStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     public List<Task> getAllTasks(HashMap<Integer, String> types, int userId){
         List<Task> tasks = new ArrayList<Task>();
@@ -61,11 +81,12 @@ public class TaskDao {
         return tasks;
     }
     
-    public List<Task> getAllCompletedTasks(HashMap<Integer, String> types){
+    public List<Task> getAllCompletedTasks(HashMap<Integer, String> types, int userId){
         List<Task> tasks = new ArrayList<Task>();
         try {
-            Statement statement = this.connection.createStatement();
-            ResultSet result = statement.executeQuery("select * from completedTasks");
+            PreparedStatement pstatement = this.connection.prepareStatement("select * from completedTasks where userId = ?");
+            pstatement.setInt(1, userId);
+            ResultSet result = pstatement.executeQuery();
             while (result.next()){
                 Task task = new Task();
                 task.setId(result.getInt("id"));
