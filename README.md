@@ -17,13 +17,13 @@ A Java 8 backend web API and ES6+ HTML/JS web interface with a PostgreSQL databa
 
 ### Tools & APIs
 - [] Agile User Stories
-- [] Java SE 8
-- [] Gradle
-- [] JDBC
-- [] PostgreSQL
-- [] JavaEE Servlet
-- [] HTML/JS/CSS
-- [] AJAX/Fetch
+- [x] Java SE 8
+- [x] Gradle
+- [x] JDBC
+- [x] PostgreSQL
+- [x] JavaEE Servlet
+- [x] HTML/JS/CSS
+- [x] AJAX/Fetch
 - [] JUnit
 - [] log4j or similar
 - [] Jest or similar JS testing framework

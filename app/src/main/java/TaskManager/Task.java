@@ -7,40 +7,49 @@ public class Task {
     private Date date;
     private String task;
     private int typeId;
-    private boolean complete;
+    private String taskType = "";
+    private boolean complete = false;
     
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
-
+    
+    public Date getDate() {
+        return date;
+    }
+    
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    public String getTask() {
+        return task;
+    }
+    
+    public void setTask(String task) {
+        this.task = task;
+    }
+    
     public int getTypeId() {
         return typeId;
     }
-
+    
     public void setTypeId(int typeId) {
         this.typeId = typeId;
     }
 
-    public String getTask() {
-        return task;
+    public String getTaskType() {
+        return taskType;
     }
-
-    public void setTask(String task) {
-        this.task = task;
+    
+    public void setTaskType(String taskType) {
+        this.taskType = taskType;
     }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
+    
     public boolean isComplete() {
         return complete;
     }

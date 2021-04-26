@@ -1,0 +1,55 @@
+*{
+    font-size: 18px;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+th{
+    width: 200px;
+    border: solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+td{
+    border: 1px solid black;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+#navbar{
+    display: flex;
+    min-width: 100%;
+    justify-content: flex-end;
+    padding: 10px 5px;
+    background-color: lightslategrey;
+    border-bottom: 1px solid black;
+}
+
+#login, #register, #logout{
+    align-self: flex-end;
+    padding: 5px 10px;
+    border: 1px solid black;
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+}
+
+#tasks{
+    display: flex;
+    justify-content: space-between;
+}
+
+#user, #password{
+    text-align: start;
+}

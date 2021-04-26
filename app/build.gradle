@@ -13,6 +13,7 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.45'
     implementation 'org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6'
     implementation 'org.postgresql:postgresql:42.2.19.jre7'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
 }
 
 application {

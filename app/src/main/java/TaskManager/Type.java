@@ -4,8 +4,17 @@ public class Type {
     private int id;
     private String taskType;
 
+    public Type(String type){
+        this.taskType = type;
+    }
+    
+    public Type(int id, String type){
+        this.id = id;
+        this.taskType = type;
+    }
+
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -13,7 +22,7 @@ public class Type {
     }
 
     public String getTaskType() {
-        return taskType;
+        return this.taskType;
     }
 
     public void setTaskType(String taskType) {
