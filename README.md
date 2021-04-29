@@ -54,7 +54,3 @@ A Java 8 backend web API and ES6+ HTML/JS web interface with a PostgreSQL databa
 - [x] Login - Authentication & Authorization
 - [x] Database persistance
 - [x] Session management
-
-### Presentation
-- [] Prepare a demonstration of functionality requirements through a browser
-- [] Prepare visual aides (slides) introducing the project requirements and features
