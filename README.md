@@ -10,7 +10,6 @@
  ### Account Features
  - [x] Able to login
  - [x] Able to logout
- - [] Admin privileges 
 
 # Project 1 - Notes
 A Java 8 backend web API and ES6+ HTML/JS web interface with a PostgreSQL database. Submit a README.md with a proposal that matches as many requirements as manageable below. You may use the example proposal below for reference, or as your project itself.
